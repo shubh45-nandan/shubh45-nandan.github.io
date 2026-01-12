@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubhanandan T Y - Academic Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9f9f9;
+        }
+
+        nav {
+            background: #2c3e50;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+        }
+
+        .profile-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: white;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .profile-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .profile-section .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-info {
+            text-align: left;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #2980b9;
+        }
+
+        .main-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-content h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin: 3rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .main-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .interests-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .interests-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .interests-list li:before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .news-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            color: #3498db;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .project-card {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-authors {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-venue {
+            display: inline-block;
+            background: #e8f4f8;
+            color: #3498db;
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #2980b9;
+        }
+
+        .hobbies-section {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .hobby-item {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+            }
+
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-img">
+                    <img src="https://lh3.googleusercontent.com/d/1_QfcvLrHn7B2CzR4XpsSYIEunOA9En7r" alt="Shubhanandan T Y" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%; object-position: center; padding: 10px;" onerror="this.style.display='none'; this.parentElement.innerHTML='ST'; this.parentElement.style.fontSize='4rem'; this.parentElement.style.display='flex'; this.parentElement.style.alignItems='center'; this.parentElement.style.justifyContent='center';">
+                </div>
+                <h2>Shubhanandan T Y</h2>
+                <p class="subtitle">AI & Robotics Undergrad @ Dayananda Sagar University</p>
+                
+                <div class="contact-info">
+                    <p><strong>Dayananda Sagar University, India</strong></p>
+                    <div class="social-links">
+                        <a href="mailto:shubh442005@gmail.com" class="social-link">📧 Email</a>
+                        <a href="tel:+916363077109" class="social-link">📱 +91 6363077109</a>
+                        <a href="https://github.com/shubh45-nandan" class="social-link" target="_blank">💻 Github</a>
+                        <a href="https://www.linkedin.com/in/shubhanandan-t-y-189466325/" class="social-link" target="_blank">💼 LinkedIn</a>
+                        <a href="https://www.instagram.com/shubhanandan_04/?hl=en" class="social-link" target="_blank">📸 Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section id="about">
+                <h1>About Me</h1>
+                <p>Hello! I'm a third-year undergraduate student in Artificial Intelligence and Robotics at Dayananda Sagar University, India. My primary interests lie at the intersection of machine learning, robotics, and intelligent systems, with a strong focus on applying learning-based methods to real-world, high-impact problems.</p>
+                
+                <p>My current research work centers on medical image analysis, particularly histopathology-based cancer classification using deep convolutional neural networks. I have worked extensively with architectures such as EfficientNet, ResNet, DenseNet, and MobileNet, and have explored hybrid learning approaches that combine deep learning with reinforcement learning agents (including PPO, SAC, DQN, and A2C) to improve classification robustness and performance. Several of these projects are being prepared for research paper submissions.</p>
+
+                <p>Alongside this, I actively work on robotics-oriented problems, including path planning and decision-making, where I am interested in how classical algorithms and learning-based methods can be integrated for intelligent navigation and control. I am also exploring cognitive architectures that model perception, reasoning, and action as a unified system, with the goal of building more adaptive and interpretable intelligent agents.</p>
+
+                <p>In parallel with my research, I consistently practice Data Structures and Algorithms, strengthening my foundations in problem-solving, complexity analysis, and efficient system design. This work directly supports my research by improving my ability to reason about scalability, optimization, and performance-aware implementations of AI systems.</p>
+
+                <p>More broadly, my interests include:</p>
+                
+                <ul class="interests-list">
+                    <li>Deep learning and representation learning</li>
+                    <li>Computer vision for healthcare and robotics</li>
+                    <li>Reinforcement learning and sequential decision-making</li>
+                    <li>Path planning, cognitive architectures, and intelligent agents</li>
+                    <li>Data structures, algorithms, and scalable AI systems</li>
+                </ul>
+
+                <p>I am particularly motivated by research that balances theoretical understanding with rigorous implementation, and I enjoy deeply analyzing model behavior, algorithmic trade-offs, and system-level design rather than treating models as black boxes.</p>
+
+                <p>I actively seek opportunities to collaborate on research projects, open-source contributions, and academic discussions, especially with researchers and practitioners working in machine learning, robotics, and applied AI.</p>
+
+                <p>Please feel free to reach out for research collaborations or discussions. The best way to reach me is via email: <strong>shubh442005@gmail.com</strong></p>
+
+                <p><strong>CV</strong>: <a href="#" class="social-link">PDF here</a>, updated January 2026.</p>
+            </section>
+
+            <section id="news">
+                <h2>News</h2>
+                
+                <div class="news-item">
+                    <span class="news-date">Dec '25</span>
+                    <span>Started exploring various research projects in AI and Robotics.</span>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">2025</span>
+                    <span>Presented my research project at Bengaluru Tech Summit.</span>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Aug '23</span>
+                    <span>Started my B.Tech in Artificial Intelligence and Robotics at Dayananda Sagar University.</span>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Mar '23</span>
+                    <span>Completed Pre-University College (PU) from Sir M.V. PU College, Shivamogga.</span>
+                </div>
+
+                <div class="news-item">
+                    <span class="news-date">Expected May '27</span>
+                    <span>Will complete B.Tech in Artificial Intelligence and Robotics from Dayananda Sagar University.</span>
+                </div>
+            </section>
+
+            <section id="research">
+                <h2>Research Projects</h2>
+
+                <div class="project-card">
+                    <div class="project-img">🧬</div>
+                    <div class="project-content">
+                        <h3>Deep Reinforcement Learning for Colorectal Cancer Histopathology Classification</h3>
+                        <p class="project-authors">Shubhanandan T Y</p>
+                        <span class="project-venue">Dec 2025 – Present</span>
+                        <span class="project-venue">Under Preparation</span>
+                        <p style="margin-top: 1rem;">Hybrid CNN–RL architecture integrating PPO, SAC, A2C, DQN with ResNet50, DenseNet121, EfficientNetB4, and MobileNetV2. Achieved ~96% accuracy on Kather 2016 dataset with adaptive sample selection and policy-guided augmentation.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Paper (in prep)</a>
+                            <a href="https://github.com/shubh45-nandan/CNN-RL_Hybrid_Models_for_CRC" class="project-link" target="_blank">Code</a>
+                            <a href="https://docs.google.com/presentation/d/1vjlNrTPanM2v_ttO_Q4gm02QYHzovCrw/edit?usp=drive_link&ouid=110156810867516283912&rtpof=true&sd=true" class="project-link" target="_blank">Presentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">🔬</div>
+                    <div class="project-content">
+                        <h3>DenseNet121-Based Meta-Learning for CRC Histopathology</h3>
+                        <p class="project-authors">Shubhanandan T Y</p>
+                        <span class="project-venue">Dec 2025 – Present</span>
+                        <span class="project-venue">Under Preparation</span>
+                        <p style="margin-top: 1rem;">Metric-based meta-learning using ProtoNet-style framework with DenseNet121 for few-shot colorectal cancer classification. Achieved ~91% accuracy with improved robustness under limited data regimes.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Paper (in prep)</a>
+                            <a href="https://github.com/shubh45-nandan/Meta-learning-Based-CRC-" class="project-link" target="_blank">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">📊</div>
+                    <div class="project-content">
+                        <h3>Benchmarking CNN Architectures for Colorectal Cancer Histology Classification</h3>
+                        <p class="project-authors">Shubhanandan T Y</p>
+                        <span class="project-venue">May 2025 – Jul 2025</span>
+                        <span class="project-venue">Baseline Study</span>
+                        <p style="margin-top: 1rem;">Comprehensive benchmarking of EfficientNetB4, ResNet50, DenseNet121, and MobileNetV2. DenseNet121 achieved 96.68% accuracy (F1 ≈ 0.97), establishing strong supervised baselines for hybrid research.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/shubh45-nandan/CNN_BASELINE_MODLES_FOR_CRC" class="project-link" target="_blank">Code</a>
+                            <a href="#" class="project-link">Report</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">🌾</div>
+                    <div class="project-content">
+                        <h3>Autonomous Agricultural Robot for Weed Detection and Removal</h3>
+                        <p class="project-authors">Shubhanandan T Y</p>
+                        <span class="project-venue">Ongoing</span>
+                        <p style="margin-top: 1rem;">Autonomous robot for precision agriculture with weed-crop discrimination, targeted removal mechanisms, and path planning. Explores cognitive architecture integrating perception, reasoning, and action for sustainable farming solutions.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="margin-top: 3rem;">Early Robotics & Systems Projects</h2>
+
+                <div class="project-card">
+                    <div class="project-img">📡</div>
+                    <div class="project-content">
+                        <h3>Ultrasonic Radar Visualization System</h3>
+                        <p class="project-authors">Shubhanandan T Y</p>
+                        <span class="project-venue">Dec 2023 – Jan 2024</span>
+                        <p style="margin-top: 1rem;">Arduino-based radar system with servo-mounted ultrasonic sensor and real-time PC visualization. Implemented angle–distance mapping with Python/Processing interface for robotics perception.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Code</a>
+                            <a href="#" class="project-link">Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">🤖</div>
+                    <div class="project-content">
+                        <h3>Obstacle Detecting and Avoiding Robot</h3>
+                        <p class="project-authors">Shubhanandan T Y</p>
+                        <span class="project-venue">Nov 2023 – Dec 2023</span>
+                        <p style="margin-top: 1rem;">First robotics project: mobile robot with real-time obstacle detection and dynamic avoidance using ultrasonic sensing. Foundation project that shaped long-term interest in perception and autonomy.</p>
+                        <div class="project-links">
+                            <a href="#" class="project-link">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="certifications">
+                <h2>Certifications & Technical Skills</h2>
+
+                <div class="project-card">
+                    <div class="project-img">☁️</div>
+                    <div class="project-content">
+                        <h3>AWS Cloud Practitioner Essentials</h3>
+                        <p class="project-authors">Amazon Web Services (AWS)</p>
+                        <p style="margin-top: 1rem;">Completed formal training covering the core concepts of cloud computing, including compute, storage, networking, and pricing models. Gained foundational understanding of how cloud infrastructure supports scalable, reliable, and cost-efficient machine learning and data-driven systems.</p>
+                        <p style="margin-top: 0.5rem; color: #7f8c8d; font-size: 0.9rem;"><strong>Skills acquired:</strong> Cloud computing fundamentals, cloud service models, basic cloud architecture, cloud applications</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1UWmgalnoqaUBG0hrl8C-oqP4V0EVgO_B/view" class="project-link" target="_blank">View Certificate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">🔧</div>
+                    <div class="project-content">
+                        <h3>AWS Technical Essentials</h3>
+                        <p class="project-authors">Amazon Web Services (AWS)</p>
+                        <p style="margin-top: 1rem;">Completed hands-on training focused on AWS core services and architectural best practices. Developed an understanding of how cloud systems are designed with security, cost optimization, and scalability in mind, which is relevant for deploying machine learning pipelines and research workloads.</p>
+                        <p style="margin-top: 0.5rem; color: #7f8c8d; font-size: 0.9rem;"><strong>Skills acquired:</strong> Cloud architecture fundamentals, AWS core services, cost optimization strategies, security and compliance basics</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1soX0tmufdbAQXKFTZp6nh5tbLKaEzxAo/view" class="project-link" target="_blank">View Certificate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">🤖</div>
+                    <div class="project-content">
+                        <h3>Introduction to Generative AI: Art of the Possible</h3>
+                        <p class="project-authors">Amazon Web Services (AWS)</p>
+                        <p style="margin-top: 1rem;">Gained foundational exposure to generative AI concepts, use cases, and system-level considerations. Developed an understanding of how generative models fit into real-world applications and larger AI system pipelines.</p>
+                        <p style="margin-top: 0.5rem; color: #7f8c8d; font-size: 0.9rem;"><strong>Skills acquired:</strong> Generative AI concepts, AI use cases, foundational model understanding</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1CZo-evSVrBQwyfD9XNCpD9y6pblSGUgt/view" class="project-link" target="_blank">View Certificate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">📝</div>
+                    <div class="project-content">
+                        <h3>Official Practice Question Set: AWS Certified Cloud Practitioner (CLF-C02)</h3>
+                        <p class="project-authors">Amazon Web Services (AWS)</p>
+                        <p style="margin-top: 1rem;">Worked through official AWS practice material to reinforce understanding of cloud security, shared responsibility models, and operational best practices in cloud environments.</p>
+                        <p style="margin-top: 0.5rem; color: #7f8c8d; font-size: 0.9rem;"><strong>Skills acquired:</strong> Cloud security fundamentals, cloud operations, AWS best practices</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1M77ZFEuXIQWuYMFbUG_4RBOy-GdXRHb-/view" class="project-link" target="_blank">View Certificate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">📊</div>
+                    <div class="project-content">
+                        <h3>Applications and Use Cases Professional Certification</h3>
+                        <p class="project-authors">Altair</p>
+                        <p style="margin-top: 1rem;">Completed training focused on applying machine learning to real-world problems using structured methodologies. Developed practical understanding of the CRISP-DM process, data visualization, and translating problem statements into deployable machine learning solutions.</p>
+                        <p style="margin-top: 0.5rem; color: #7f8c8d; font-size: 0.9rem;"><strong>Skills acquired:</strong> Machine learning workflows, data science fundamentals, CRISP-DM methodology, data visualization, applied ML use cases</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/file/d/1K-pg_nWpBDatNxuo4CKcYqzQ06fnjQ42/view" class="project-link" target="_blank">View Certificate</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="hobbies">
+                <h2>Hobbies/Interests</h2>
+                <div class="hobbies-section">
+                    <p class="hobby-item">🏏 I love playing cricket! Whether it's a casual match with friends or following international tournaments, cricket has always been a passion of mine.</p>
+                    <p class="hobby-item">🍳 I enjoy cooking and experimenting with different cuisines. There's something satisfying about creating delicious meals and trying out new recipes.</p>
+                    <p class="hobby-item">✈️ I'm passionate about travelling and exploring new places. I love experiencing different cultures, trying local food, and discovering hidden gems in new destinations.</p>
+                </div>
+            </section>
+
+            <p style="margin-top: 3rem; color: #7f8c8d; font-size: 0.9rem;">This website is last updated: January 2026</p>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2026 Shubhanandan T Y</p>
+        <p>Powered by GitHub Pages</p>
+        <p>Site last updated 2026-01-08</p>
+    </footer>
+</body>
+</html>
